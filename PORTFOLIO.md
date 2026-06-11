@@ -1,14 +1,13 @@
 # CAS D'USAGE 7 — PySpark & Données Volumineuses
 ## Traitement de grands volumes de données avec PySpark pour produire des agrégats analytiques
 
-> **Auteur :** Emmanuel TSAGUE — Data Scientist / Data Analyst  
+> **Auteur :** TSAGUE EMMANUEL — Data Scientist / Data Analyst  
 > **Domaine :** Data Engineering, Big Data, Traitement distribué  
 > **Repository GitHub :** `pyspark-big-data-processing`  
 > **Statut :** Portfolio — données simulées  
 > **Date :** Juin 2026
 
 ---
-
 ## 1. TITRE ET RÉSUMÉ EXÉCUTIF
 
 **"Traitement de données volumineuses avec PySpark — Du DataFrame local au pipeline distribué scalable"**
@@ -22,7 +21,6 @@ Une organisation traite des journaux de consommation, des logs de capteurs ou de
 **Résultats hypothétiques :** traitement de 50M de lignes en 45 secondes vs 8 minutes avec pandas, réduction de 70 % du temps de pipeline ETL.
 
 ---
-
 ## 2. CONTEXTE MÉTIER
 
 > **Big Data :** terme qui désigne des volumes de données trop grands pour être traités par les outils traditionnels (Excel, pandas sur une seule machine). On parle souvent des "4V" : Volume (téraoctets), Vélocité (temps réel), Variété (formats), Véracité (qualité).
@@ -38,7 +36,6 @@ Dans les environnements énergie et industrie, les données volumineuses provien
 > **IoT (Internet of Things — Internet des Objets) :** réseau d'objets physiques connectés qui collectent et échangent des données (capteurs, compteurs, équipements industriels).
 
 ---
-
 ## 3. POURQUOI CE SUJET EXISTE
 
 | Raison | Limites de pandas | Solution PySpark |
@@ -50,7 +47,6 @@ Dans les environnements énergie et industrie, les données volumineuses provien
 | Cloud | pandas ne profite pas du cloud | Spark tourne nativement sur Databricks, EMR |
 
 ---
-
 ## 4. PROBLÈME MÉTIER
 
 > "Notre script Python tourne 8 heures sur un fichier de 20 Go. Il plante souvent car la RAM est dépassée. On ne peut pas traiter un an entier de données."
@@ -63,7 +59,6 @@ Dans les environnements énergie et industrie, les données volumineuses provien
 5. Exporter vers des formats analytiques optimisés (Parquet)
 
 ---
-
 ## 5. OBJECTIFS DU PROJET
 
 | Objectif | Description | Outil |
@@ -77,7 +72,6 @@ Dans les environnements énergie et industrie, les données volumineuses provien
 | Comparer | Montrer la différence pandas vs PySpark | Benchmark |
 
 ---
-
 ## 6. DONNÉES SIMULÉES
 
 ```python
@@ -115,7 +109,6 @@ print(f"Dataset créé : {len(df):,} lignes → {df.memory_usage().sum()/1e6:.1f
 ```
 
 ---
-
 ## 7. PYSPARK — FONDAMENTAUX ET PATTERNS
 
 ### A. Initialisation de la session Spark
@@ -370,7 +363,6 @@ print(f"Gain   : ×{t_pandas/t_spark:.1f}")
 ```
 
 ---
-
 ## 8. PATTERNS AVANCÉS
 
 ### SQL Spark et sous-requêtes
@@ -405,7 +397,6 @@ ORDER BY ABS(z_score) DESC
 ```
 
 ---
-
 ## 9. DÉMARCHE ÉTAPE PAR ÉTAPE
 
 ```
@@ -422,7 +413,6 @@ ORDER BY ABS(z_score) DESC
 ```
 
 ---
-
 ## 10. MÉTRIQUES
 
 | Métrique | pandas | PySpark | Contexte |
@@ -434,7 +424,6 @@ ORDER BY ABS(z_score) DESC
 | Export Parquet | 3 s | 1 s (parallèle) | 5 Go |
 
 ---
-
 ## 11. RÉSULTATS SIMULÉS
 
 | Indicateur | Valeur |
@@ -447,7 +436,6 @@ ORDER BY ABS(z_score) DESC
 | Export Parquet compressé | 68 % de réduction vs CSV |
 
 ---
-
 ## 12. VALEUR MÉTIER
 
 | Valeur | Description |
@@ -459,7 +447,6 @@ ORDER BY ABS(z_score) DESC
 | **Compatibilité** | Le code PySpark tourne sur Databricks, AWS EMR, Azure HDInsight |
 
 ---
-
 ## 13. LIMITES
 
 | Limite | Description |
@@ -471,7 +458,6 @@ ORDER BY ABS(z_score) DESC
 | Coût cluster | Un cluster cloud coûte de l'argent — à éteindre quand non utilisé |
 
 ---
-
 ## 14. AMÉLIORATIONS
 
 - Databricks : environnement cloud managé, notebooks collaboratifs
@@ -483,7 +469,6 @@ ORDER BY ABS(z_score) DESC
 > **Delta Lake :** couche de stockage open-source au-dessus de Parquet qui ajoute les transactions ACID, le versionnement des données (time travel) et l'audit. Utilisé nativement sur Databricks.
 
 ---
-
 ## 15. ARCHITECTURE GITHUB
 
 ```
@@ -510,89 +495,6 @@ pyspark-big-data-processing/
 ```
 
 ---
-
-## 16. README GITHUB
-
-```markdown
-# PySpark Big Data Processing
-## Traitement de données volumineuses avec PySpark pour l'analytique énergétique
-
-> **Auteur :** Emmanuel TSAGUE | **Données :** simulées (consommation énergie)
-
-## Objectif
-Démontrer le passage de pandas à PySpark pour traiter des volumes de données
-qui dépassent la capacité d'un seul ordinateur.
-
-## Patterns démontrés
-SparkSession · CSV/Parquet · transformations · groupBy · Window Functions
-LAG · Broadcast Join · Cache · Parquet partitionné · SQL Spark
-
-## Benchmark (simulé)
-pandas : 8 min 20 s → PySpark : 45 s (×11 plus rapide sur 50M lignes)
-
-## Avertissement
-Données entièrement simulées — représentatives d'un cas réel d'exploitation.
-```
-
----
-
-## 17. VERSION CV
-
-> Traitement de données volumineuses avec PySpark : lecture CSV/Parquet avec schéma explicite, transformations (withColumn, when, filter), agrégations (groupBy, agg), fonctions fenêtres (rank, lag, partitionBy), jointures broadcast, optimisation (cache, repartition, AQE), export Parquet partitionné — Python, PySpark, Spark SQL.
-
----
-
-## 18. VERSION ENTRETIEN
-
-"J'ai travaillé sur un cas de traitement de données volumineuses avec PySpark, dans un contexte de consommation énergétique avec 50 millions de mesures. Le problème : le script pandas plantait par manque de mémoire et prenait 8 minutes même quand il fonctionnait. J'ai migré le pipeline vers PySpark en trois étapes : d'abord la lecture en Parquet avec schéma explicite plutôt que CSV ; ensuite les transformations et agrégations avec l'API DataFrame ; enfin l'optimisation avec le broadcast join pour la jointure avec la table de tarifs, et le partitionnement Parquet par année/mois pour les lectures filtrées. Le résultat simulé : de 8 minutes à 45 secondes. La principale leçon : PySpark est plus complexe que pandas mais c'est la seule option viable quand les données dépassent la RAM disponible."
-
----
-
-## 19. VERSION PORTFOLIO
-
-Ce projet démontre la connaissance du Big Data Engineering dans un contexte de traitement de données massives. PySpark est le standard industriel pour ce type de workload. La capacité à écrire du code efficace (broadcast join, cache, partitionnement) est ce qui distingue un Data Engineer qui "connaît PySpark" d'un qui sait réellement l'optimiser.
-
----
-
-## 20. POST LINKEDIN
-
-**Quand pandas ne suffit plus.**
-
-8 millions de mesures de capteurs. Un script pandas qui tourne 8 minutes. Et qui plante parfois par manque de mémoire.
-
-La solution : PySpark.
-
-Le même pipeline, réécrit avec PySpark, tourne en 45 secondes (simulé) — soit 11 fois plus rapide.
-
-Mais la vraie valeur de PySpark n'est pas juste la vitesse : c'est la scalabilité. Le même code qui tourne sur 500 000 lignes en local tournera sur 500 millions de lignes sur un cluster Databricks ou AWS EMR, sans modifier une seule ligne.
-
-Quelques patterns clés que j'ai démontrés dans ce cas :
-
-🔹 Broadcast join : envoyer une petite table à tous les nœuds pour éviter les shuffles coûteux
-🔹 Parquet partitionné : lire uniquement les partitions nécessaires
-🔹 Window Functions : LAG et RANK distribués sur des millions de lignes
-🔹 Cache : stocker en mémoire un DataFrame réutilisé plusieurs fois
-
-`#PySpark` `#BigData` `#DataEngineering` `#Python` `#Spark` `#Databricks`
-
----
-
-## 21. QUESTIONS D'ENTRETIEN
-
-**Q : Quelle différence entre transformation et action en PySpark ?**
-> Une transformation (filter, groupBy, withColumn) ne déclenche pas de calcul — Spark construit un plan d'exécution. Une action (count, show, collect, write) déclenche l'exécution réelle. C'est la "lazy evaluation". L'avantage : Spark peut optimiser l'ensemble du plan avant de l'exécuter.
-
-**Q : Quand utiliser le cache en PySpark ?**
-> Quand on utilise le même DataFrame plusieurs fois dans le pipeline. Sans cache, Spark recalcule le DataFrame depuis le début à chaque action. Avec cache, il est stocké en mémoire. Attention : le cache coûte de la mémoire — ne pas cacher des DataFrames très volumineux inutilement.
-
-**Q : Qu'est-ce qu'un shuffle et comment le minimiser ?**
-> Un shuffle est la redistribution des données entre les nœuds lors des groupBy ou join. C'est l'opération la plus coûteuse. Pour le minimiser : utiliser broadcast join pour les petites tables, filtrer le plus tôt possible dans le pipeline, utiliser des clés de partitionnement bien choisies.
-
-**Q : Quelle est la différence entre Parquet et CSV pour le Big Data ?**
-> CSV est un format texte ligne par ligne — lisible par humain mais lent à lire. Parquet est un format binaire colonnaire — illisible directement mais 10× plus rapide en lecture (lit uniquement les colonnes utiles) et 5× plus compact grâce à la compression par colonne.
-
----
-
 ## 22-23. COMPÉTENCES DÉMONTRÉES
 
 | Compétence | Preuve | Valeur | Phrase CV |
@@ -605,4 +507,22 @@ Quelques patterns clés que j'ai démontrés dans ce cas :
 
 ---
 
-*Fin du document — Emmanuel TSAGUE — CAS 7 — PySpark & Données Volumineuses*
+*Fin du document — TSAGUE EMMANUEL — CAS 7 — PySpark & Données Volumineuses*
+---
+
+## Contact & Liens
+
+**TSAGUE EMMANUEL** - Data Scientist
+
+| | |
+|---|---|
+| Email | [emmatsague@yahoo.fr](mailto:emmatsague@yahoo.fr) |
+| GitHub | [github.com/TSAGUE25](https://github.com/TSAGUE25) |
+| Formation | Datascientest 2024 |
+| Experience | EDF MAD EDVANCE |
+| Domaines | Machine Learning - Data Analysis - Energie |
+
+---
+
+> Toutes les donnees de ce depot sont simulees et anonymisees.  
+> Aucune donnee reelle ou confidentielle n'est presente.
