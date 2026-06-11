@@ -20,3 +20,7 @@ outputs/
 dist/
 build/
 *.egg-info/
+
+# Allow demo data
+!data_sample/*.csv
+!data_sample/*.db

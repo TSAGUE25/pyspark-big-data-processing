@@ -1,4 +1,4 @@
-# Traitement Big Data avec PySpark
+﻿# Traitement Big Data avec PySpark
 
 > **Traitement distribué de données volumineuses pour produire des agrégats analytiques**
 
@@ -114,9 +114,9 @@ Déploiement sur Databricks ou EMR. Delta Lake pour ACID transactions.
 
 ---
 
-## Auteur
+## Contributors
 
-**Emmanuel TSAGUE** — Data Scientist / Data Analyst
+**TSAGUE Emmanuel** — Data Scientist / Data Analyst
 Domaine : Data Engineering · Big Data · Traitement distribué
 GitHub : [TSAGUE25](https://github.com/TSAGUE25)
 
